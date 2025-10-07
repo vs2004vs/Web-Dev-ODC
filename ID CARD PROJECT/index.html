@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Liberia National ID </title>
+  <link rel="stylesheet" href="style.css">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Liberia National ID ODC </h1>
+    <div id="msg" class="msg" role="alert" aria-live="polite"></div>
+
+
+    
+    <form id="idForm" class="panel" novalidate>
+     <div class="row">
+        <label>First Name
+          <input name="firstName" required>
+        </label>
+        <label>Last Name
+          <input name="lastName" required>
+        </label>
+        <label>Date of Birth
+          <input type="date" name="dob" required>
+        </label>
+        <label>Sex
+          <select name="sex" required>
+            <option value="">Select…</option>
+            <option>Male</option>
+            <option>Female</option>
+             <option>Other</option>
+          </select>
+          <label>NIN
+          <input name="nin"
+                 placeholder="LBR-1234-5678"
+                 pattern="^[A-Za-z]{3}-\\d{4}-\\d{4}$"
+                 title="Use format like LBR-1234-5678"
+                 required>
+        </label>
+
+        </label>
+        <label>NIN
+          <input name="nin" placeholder="LBR-1234-5678" required>
+        </label>
+        <label>Address
+          <input name="address" placeholder="Community · City · County">
+        </label>
+        <label>Photo
+          <input type="file" name="photo" accept="image/*">
+        </label>
+      </div>
+
+     <div class="actions">
+        <button id="btnGenerate" type="button">Generate / Update</button>
+        <button id="btnDownload" type="button" class="secondary">Download PNG</button>
+        <button id="btnPrint" type="button" class="secondary">Print</button>
+        <button id="btnClear" type="button" class="danger">Clear Saved</button>
+      </div>
+       
+    </form>
+
+    
+    <section class="cards">
+
+      <!-- FRONT OF My ID CARD OH -->
+
+      <div id="cardFront" class="id-card front">
+        <div class="title">REPUBLIC OF LIBERIA</div>
+        <div class="photo"><img id="outPhoto" alt=""></div>
+
+        <div class="line"><span>Surname:</span> <strong id="outLast">—</strong></div>
+        <div class="line"><span>Given Name(s):</span> <strong id="outFirst">—</strong></div>
+        <div class="line"><span>DOB:</span> <strong id="outDob">—</strong></div>
+        <div class="line"><span>Sex:</span> <strong id="outSex">—</strong></div>
+
+        <div class="nin" id="outNin">LBR-0000-0000</div>
+      </div>
+
+      <!-- BACK OF MY ID OH-->
+      <div id="cardBack" class="id-card back">
+        <div class="title">National Identification Card</div>
+        <div class="line"><span>Cardholder:</span> <strong id="outHolder">—</strong></div>
+        <div class="line"><span>Address:</span> <strong id="outAddress">—</strong></div>
+
+        <div class="qr" id="qrBox"></div>
+        <small class="note">QR contains only the NIN for quick verification.</small>
+      </div>
+    </section>
+  </main>
+
+  
+  <script src="app.js"></script>
+</body>
+</html>
